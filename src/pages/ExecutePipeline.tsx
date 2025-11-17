@@ -96,8 +96,8 @@ const ExecutePipeline = () => {
               </SelectTrigger>
               <SelectContent>
                 {metadataFiles.map((file) => (
-                  <SelectItem key={file.path} value={file.path}>
-                    {file.name}
+                  <SelectItem key={file.name} value={file.name}>
+                    {file.name} {file.version && `(v${file.version})`}
                   </SelectItem>
                 ))}
               </SelectContent>
