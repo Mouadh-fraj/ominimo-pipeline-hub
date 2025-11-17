@@ -34,6 +34,7 @@ export const api = {
       size: 0, // Not provided by API
       created_at: new Date().toISOString(),
       version: file.version,
+      description: file.description,
       dataflows: undefined,
     }));
   },
