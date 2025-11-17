@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { MetadataFile } from "@/types/pipeline";
-import { FileJson, Upload, Download, Eye, Trash2, Search, RefreshCw } from "lucide-react";
+import { FileJson, Upload, Download, Trash2, Search, RefreshCw } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { api } from "@/services/api";
@@ -145,10 +145,8 @@ const Metadata = () => {
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>
+                <TableHead>Description</TableHead>
                 <TableHead>Version</TableHead>
-                <TableHead>Dataflows</TableHead>
-                <TableHead>Size</TableHead>
-                <TableHead>Created</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -161,25 +159,18 @@ const Metadata = () => {
                       <span className="font-medium">{file.name}</span>
                     </div>
                   </TableCell>
-                  <TableCell>
-                    <span className="text-sm text-muted-foreground">
-                      v{file.version}
+                  <TableCell className="max-w-md">
+                    <span className="text-sm text-muted-foreground truncate block">
+                      {file.description || "No description"}
                     </span>
                   </TableCell>
                   <TableCell>
-                    <span className="text-sm">{file.dataflows} flows</span>
-                  </TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
-                    {formatFileSize(file.size)}
-                  </TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
-                    {new Date(file.created_at).toLocaleDateString()}
+                    <span className="text-sm text-muted-foreground">
+                      {file.version || "N/A"}
+                    </span>
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
-                      <Button variant="ghost" size="sm">
-                        <Eye className="h-4 w-4" />
-                      </Button>
                       <Button 
                         variant="ghost" 
                         size="sm"
