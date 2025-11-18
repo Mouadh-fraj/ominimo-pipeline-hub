@@ -9,7 +9,8 @@ import {
   Clock,
   CheckCircle2,
   Server,
-  RefreshCw
+  RefreshCw,
+  Database
 } from "lucide-react";
 import { HealthStatus } from "@/types/pipeline";
 import { useState, useEffect } from "react";
@@ -84,7 +85,7 @@ const Health = () => {
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <StatCard
           title="System Status"
           value={health.status}
@@ -102,6 +103,12 @@ const Health = () => {
           value={health.database === "healthy" ? "Connected" : "Error"}
           icon={CheckCircle2}
           description="Database status"
+        />
+        <StatCard
+          title="Airflow"
+          value={health.airflow?.includes("healthy") ? "Connected" : "Error"}
+          icon={Server}
+          description="Airflow status"
         />
       </div>
 
