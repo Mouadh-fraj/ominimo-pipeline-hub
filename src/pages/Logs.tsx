@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -14,12 +15,13 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { api } from "@/services/api";
 import { useSearchParams } from "react-router-dom";
+import { PipelineLog } from "@/types/pipeline";
 
 const Logs = () => {
   const [searchParams] = useSearchParams();
   const [selectedPipeline, setSelectedPipeline] = useState(searchParams.get("id") || "");
   const [searchQuery, setSearchQuery] = useState("");
-  const [logs, setLogs] = useState("");
+  const [logs, setLogs] = useState<PipelineLog[]>([]);
   const [pipelineIds, setPipelineIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
 
