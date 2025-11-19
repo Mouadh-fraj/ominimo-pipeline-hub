@@ -14,6 +14,8 @@ import { FileJson, Upload, Download, Trash2, Search, RefreshCw, AlertCircle } fr
 import { useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { api } from "@/services/api";
+import MetadataGuide from "@/components/MetadataGuide";
+import { StatusBadge } from "@/components/StatusBadge";
 
 const Metadata = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -127,6 +129,8 @@ const Metadata = () => {
           </Button>
         </div>
       </div>
+
+      <MetadataGuide />
 
       <input
         ref={fileInputRef}
